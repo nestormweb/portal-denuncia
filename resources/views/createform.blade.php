@@ -8,7 +8,7 @@
 
 @section('content')
 
-@include('mensajes')
+
 
 <form action="/formulario" method="post" id="my-form" enctype="multipart/form-data" xl-form>
     @csrf
@@ -22,35 +22,40 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group ">
-                    <label>Cedula</label>
+                    <label>N°CEDULA :</label>
                     <input type="text" name="cedula" class="form-control" value="{{isset($cedula)? $cedula :null}}" readonly>
                 </div>
                 <div class="form-group ">
-                    <label> Telefono </label>
+                    <label> TELEFONO:</label>
                     <input type="text" class="form-control" name="telefono" value=''>
+                </div>
+                 <div class="form-group ">
+                    <label> E-MAIL:</label>
+                    <input type="text" class="form-control" name="email" value=''>
+                  
                 </div>
             </div>
 
             <div class="col-md-4">
                 <div class="form-group ">
-                    <label> Nombre </label>
+                    <label> NOMBRE: </label>
                     <input type="text" name="nombre" class="form-control" value="{{ isset($nombre)? $nombre :null}}" readonly>
                 </div>
                 <div class="form-group ">
-                    <label> Calle </label>
-                    <input type="text" class="form-control" name="calle" value=''>
+                    <label>CALLE:</label>
+                    <input type="text" class="form-control" name="calle" maxlength="40">
                 </div>
             </div>
 
 
             <div class="col-md-4">
                 <div class="form-group ">
-                    <label>Apellido</label>
+                    <label>APELLIDO</label>
                     <input type="text" name="apellido" class="form-control" value="{{ isset($apellido)? $apellido :null}}" readonly>
 
                 </div>
                 <div class="form-group ">
-                    <label> N° Casa </label>
+                    <label> N° CASA </label>
                     <input type="text" class="form-control" name="numerocasa" value=''>
                 </div>
 
@@ -74,15 +79,15 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group ">
-                    <label>Denuncia</label>
+                    <label>DENUNCIA</label>
                     <textarea class="form-control"name="denu" rows="3" placeholder="Escriba su denuncia"></textarea>
                 </div>
                 <div class="form-group ">
-                    <label> Otra situacion </label>
+                    <label> OTRA SITUACIÓN</label>
                     <textarea class="form-control"name="otrasituacion" rows="3" placeholder="Emplee otra situacion"></textarea>
                 </div>
                 <div class="form-group ">
-                    <label>Departamento </label>
+                    <label>DEPARTAMENTO</label>
                     <select name="departamento" id="nombre" class="form-control">
                         <option value="">Seleccione su Dpto</option>
                         @foreach($dpto as $depa)
@@ -90,15 +95,15 @@
                         @endforeach
                       </select>                </div>
                 <div class="form-group ">
-                    <label> Municipio</label>
+                    <label> MUNICIPIO</label>
                     <input type="text" class="form-control" name="municipio" value=''>
                 </div>
                 <div class="form-group ">
-                    <label> Comunidad</label>
-                    <input type="text" class="form-control" name="comunidad" value=''>
+                    <label> COMUNIDAD</label>
+                    <input type="text" class="form-control" name="comunidad" maxlength="40">
                 </div>
                 <div class="form-group ">
-                    <label> Tipo de infraccion</label>
+                    <label> TIPO INFRACCIÓN</label>
                     <select name="infraccion" id="infracciones" class="form-control">
                         <option value="">Seleccione el tipo de infraccion</option>
                         @foreach($infrac as $infra)
@@ -132,6 +137,13 @@
 
         </div>
 </form>
+<div class="box box-primary">
+<div class="box-header with-border">
+              <h3 class="box-title">Antecedentes adicionales</h3>
+            </div>
 </div>
+
+
+
 @stop
 

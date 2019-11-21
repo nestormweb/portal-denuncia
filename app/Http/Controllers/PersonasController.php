@@ -44,13 +44,13 @@ class PersonasController extends Controller
 
         
 
-        if ($request->input('cedula')) {
+      /*  if ($request->input('cedula')) {
             $existe = Personas::where('cedula',$request->input('cedula'))->get();
             if($existe->count() >= 1){
                 \Session::flash('error', 'Ya existe el denunciante!');
                 return redirect()->back();
             }
-
+*/
             $headers = [
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
@@ -86,7 +86,9 @@ class PersonasController extends Controller
                     //Flash::error($datospersona->obtenerPersonaPorNroCedulaResponse->return->error);
                     Session::flash('error', $datospersona->obtenerPersonaPorNroCedulaResponse->return->error);
                     return redirect()->back();
-                }else{
+
+                }
+                else{
                     $nombre = $datospersona->obtenerPersonaPorNroCedulaResponse->return->nombres;
                     $apellido = $datospersona->obtenerPersonaPorNroCedulaResponse->return->apellido;
                     $cedula = $datospersona->obtenerPersonaPorNroCedulaResponse->return->cedula;
@@ -104,15 +106,7 @@ class PersonasController extends Controller
 
                 //$nombre = $datos->nombres;
                 //echo $cedula->getBody()->getContents();
-            }else{
-                Flash::success($book->message);
-                return redirect()->back();
             }
-        }else{
-
-            $nroexp = '';
-            return view('welcome',compact('nroexp'));
-        }
         
     }
 /**
@@ -141,6 +135,7 @@ class PersonasController extends Controller
         $personas->nombre = $request->nombre;
         $personas->apellido = $request->apellido;
         $personas->telefono = $request->telefono;
+        $personas->email = $request->email;
         $personas->numerocasa = $request->numerocasa;
         $personas->calle= $request->calle;
 
